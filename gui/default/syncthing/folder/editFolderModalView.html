@@ -4,20 +4,20 @@
       <ul class="nav nav-tabs" ng-init="loadFormIntoScope(folderEditor)">
         <li ng-class="{'disabled': currentFolder._editing == 'new-ignores'}" class="active"><a data-toggle="tab" href="{{currentFolder._editing == 'new-ignores' ? '' : '#folder-general'}}"><span class="fas fa-cog"></span> <span translate>General</span></a></li>
         <li ng-class="{'disabled': currentFolder._editing == 'new-ignores'}"><a data-toggle="tab" href="{{currentFolder._editing == 'new-ignores' ? '' : '#folder-sharing'}}"><span class="fas fa-share-alt"></span> <span translate>Sharing</span></a></li>
-        <li ng-class="{'disabled': currentFolder._editing == 'new-ignores'}"><a data-toggle="tab" href="{{currentFolder._editing == 'new-ignores' ? '' : '#folder-versioning'}}"><span class="fas fa-copy"></span> <span translate>File Versioning</span></a></li>
+        <!--<li ng-class="{'disabled': currentFolder._editing == 'new-ignores'}"><a data-toggle="tab" href="{{currentFolder._editing == 'new-ignores' ? '' : '#folder-versioning'}}"><span class="fas fa-copy"></span> <span translate>File Versioning</span></a></li>-->
         <li ng-class="{'disabled': currentFolder._recvEnc}"><a data-toggle="tab" href="{{currentFolder._recvEnc ? '' : '#folder-ignores'}}"><span class="fas fa-filter"></span> <span translate>Ignore Patterns</span></a></li>
-        <li ng-class="{'disabled': currentFolder._editing == 'new-ignores'}"><a data-toggle="tab" href="{{currentFolder._editing == 'new-ignores' ? '' : '#folder-advanced'}}"><span class="fas fa-cogs"></span> <span translate>Advanced</span></a></li>
+        <!--<li ng-class="{'disabled': currentFolder._editing == 'new-ignores'}"><a data-toggle="tab" href="{{currentFolder._editing == 'new-ignores' ? '' : '#folder-advanced'}}"><span class="fas fa-cogs"></span> <span translate>Advanced</span></a></li>-->
       </ul>
       <div class="tab-content">
 
         <div id="folder-general" class="tab-pane in active">
-          <div class="form-group" ng-class="{'has-error': folderEditor.folderLabel.$invalid && folderEditor.folderLabel.$dirty && !editingFolderDefaults()}">
+          <!--<div class="form-group" ng-class="{'has-error': folderEditor.folderLabel.$invalid && folderEditor.folderLabel.$dirty && !editingFolderDefaults()}">
             <label for="folderLabel"><span translate>Folder Label</span></label>
             <input name="folderLabel" id="folderLabel" class="form-control" type="text" ng-model="currentFolder.label" value="{{currentFolder.label}}" />
             <p class="help-block">
               <span translate ng-if="folderEditor.folderLabel.$valid || folderEditor.folderLabel.$pristine">Optional descriptive label for the folder. Can be different on each device.</span>
             </p>
-          </div>
+          </div>-->
           <div ng-if="!editingFolderDefaults()" class="form-group" ng-class="{'has-error': folderEditor.folderID.$invalid && folderEditor.folderID.$dirty}">
             <label for="folderID"><span translate>Folder ID</span></label>
             <input name="folderID" ng-readonly="has(['existing', 'new-pending'], currentFolder._editing)" id="folderID" class="form-control" type="text" ng-model="currentFolder.id" required="" aria-required="true" unique-folder value="{{currentFolder.id}}" />
@@ -160,9 +160,9 @@
         <div id="folder-ignores" class="tab-pane" ng-switch="editingFolderNew()">
           <div ng-switch-when="true">
             <label>
-              <input type="checkbox" ng-model="currentFolder._addIgnores" >&nbsp;<span translate>Add ignore patterns</span>
+              <!--<input type="checkbox" ng-model="currentFolder._addIgnores" >&nbsp;<span translate>Add ignore patterns</span>-->
             </label>
-            <p translate class="help-block">Ignore patterns can only be added after the folder is created. If checked, an input field to enter ignore patterns will be presented after saving.</p>
+            <p translate class="help-block">Finish creating this folder before adding ignore patterns.</p>
           </div>
           <div ng-switch-default>
             <p translate>Enter ignore patterns, one per line.</p>
@@ -188,10 +188,10 @@
               <dt><code>//</code></dt>
               <dd><span translate>Comment, when used at the start of a line</span></dd>
             </dl>
-            <div ng-if="!editingFolderDefaults()">
+            <!--<div ng-if="!editingFolderDefaults()">
               <hr />
               <span translate translate-value-path="{{currentFolder.path}}{{system.pathSeparator}}.stignore">Editing {%path%}.</span>
-            </div>
+            </div>-->
           </div>
         </div>
 

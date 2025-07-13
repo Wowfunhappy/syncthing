@@ -66,7 +66,7 @@
     <div ng-if="version.isBeta" ng-include="'syncthing/development/logbar.html'"></div>
     <!-- Top bar -->
 
-    <nav class="navbar navbar-top navbar-default" role="navigation">
+    <!--<nav class="navbar navbar-top navbar-default" role="navigation">
       <div class="container">
         <span class="navbar-brand" aria-hidden="true">
           <img class="logo hidden-xs" src="assets/img/logo-horizontal.svg" height="32" width="117" alt=""/>
@@ -121,7 +121,8 @@
           </li>
         </ul>
       </div>
-    </nav>
+    </nav>-->
+    <div class="spacer" style="height: 16px;"></div>
 
     <div class="container content">
 
@@ -391,17 +392,17 @@
                 <div class="panel-body">
                   <table class="table table-condensed table-striped table-auto">
                     <tbody>
-                      <tr ng-show="folder.label != undefined && folder.label.length > 0">
+                      <!--<tr ng-show="folder.label != undefined && folder.label.length > 0">
                         <th><span class="fas fa-fw fa-info-circle"></span>&nbsp;<span translate>Folder ID</span></th>
                         <td class="text-right no-overflow-ellipse">{{folder.id}}</td>
-                      </tr>
+                      </tr>-->
                       <tr>
                         <th><span class="fas fa-fw fa-folder-open"></span>&nbsp;<span translate>Folder Path</span></th>
                         <td class="text-right">
                           <span tooltip data-original-title="{{folder.path}}">{{folder.path}}</span>
                         </td>
                       </tr>
-                      <tr ng-if="!folder.paused && (model[folder.id].invalid || model[folder.id].error)">
+                      <!--<tr ng-if="!folder.paused && (model[folder.id].invalid || model[folder.id].error)">
                         <th><span class="fas fa-fw fa-exclamation-triangle"></span>&nbsp;<span translate>Error</span></th>
                         <td class="text-right">
                           <span tooltip data-original-title="{{model[folder.id].invalid || model[folder.id].error}}">{{model[folder.id].invalid || model[folder.id].error}}</span>
@@ -439,7 +440,7 @@
                             </i>
                           </div>
                         </td>
-                      </tr>
+                      </tr>-->
                       <tr ng-if="model[folder.id].needTotalItems > 0">
                         <th><span class="fas fa-fw fa-cloud-download-alt"></span>&nbsp;<span translate>Out of Sync Items</span></th>
                         <td class="text-right">
@@ -479,7 +480,7 @@
                           <span translate>Yes</span>
                         </td>
                       </tr>
-                      <tr>
+                      <!--<tr>
                         <th><span class="fas fa-fw fa-refresh"></span>&nbsp;<span translate>Rescans</span></th>
                         <td class="text-right">
                           <div ng-if="folder.rescanIntervalS > 0">
@@ -511,7 +512,7 @@
                             </span>
                           </div>
                         </td>
-                      </tr>
+                      </tr>-->
                       <tr ng-if="folder.order != 'random' && folder.type != 'sendonly'">
                         <th><span class="fas fa-fw fa-sort"></span>&nbsp;<span translate>File Pull Order</span></th>
                         <td class="text-right" ng-switch="folder.order">
@@ -564,13 +565,13 @@
                           </span>
                         </td>
                       </tr>
-                      <tr ng-if="folderStats[folder.id].lastScan">
+                      <!--<tr ng-if="folderStats[folder.id].lastScan">
                         <th><span class="far fa-fw fa-clock"></span>&nbsp;<span translate>Last Scan</span></th>
                         <td translate ng-if="folderStats[folder.id].lastScanDays >= 365" class="text-right">Never</td>
                         <td ng-if="folderStats[folder.id].lastScanDays < 365" class="text-right">
                           <span>{{folderStats[folder.id].lastScan | date:'yyyy-MM-dd HH:mm:ss'}}</span>
                         </td>
-                      </tr>
+                      </tr>-->
                       <tr ng-if="folder.type != 'sendonly' && folder.type != 'receiveencrypted' && folderStats[folder.id].lastFile && folderStats[folder.id].lastFile.filename">
                         <th><span class="fas fa-fw fa-exchange-alt"></span>&nbsp;<span translate>Latest Change</span></th>
                         <td class="text-right">
@@ -953,7 +954,7 @@
 
   <!-- Bottom bar -->
 
-  <nav class="navbar navbar-default navbar-fixed-bottom">
+  <!--<nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
       <ul class="nav navbar-nav">
         <li><a class="navbar-link" href="https://syncthing.net/" target="_blank"><span class="fas fa-home"></span>&nbsp;<span translate>Home page</span></a></li>
@@ -965,7 +966,7 @@
         <li><a class="navbar-link" href="https://github.com/syncthing/syncthing" target="_blank"><span class="fas fa-wrench"></span>&nbsp;<span translate>Source Code</span></a></li>
       </ul>
     </div>
-  </nav>
+  </nav>-->
 
   <ng-include src="'syncthing/core/networkErrorDialogView.html'"></ng-include>
   <ng-include src="'syncthing/core/httpErrorDialogView.html'"></ng-include>
