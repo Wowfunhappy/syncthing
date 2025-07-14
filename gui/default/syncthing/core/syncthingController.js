@@ -2548,6 +2548,20 @@ angular.module('syncthing.core')
             $('#editFolder').modal('hide');
         }
 
+        $scope.chooseFolder = function() {
+            if (window.nativeFolderPicker && window.nativeFolderPicker.chooseFolder) {
+                var path = window.nativeFolderPicker.chooseFolder();
+                
+                if (path && path.length > 0) {
+                    $scope.currentFolder.path = path;
+                    if ($scope.updateFolderIDFromPath) {
+                        $scope.updateFolderIDFromPath();
+                    }
+                    $scope.$apply();
+                }
+            }
+        };
+
         function resetRestoreVersions() {
             $scope.restoreVersions = {
                 folder: null,
