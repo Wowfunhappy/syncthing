@@ -4,7 +4,7 @@
       <ul class="nav nav-tabs" ng-init="loadFormIntoScope(deviceEditor)">
         <li class="active"><a data-toggle="tab" href="#device-general"><span class="fas fa-cog"></span> <span translate>General</span></a></li>
         <li ng-if="!editingDeviceDefaults()"><a data-toggle="tab" href="#device-sharing"><span class="fas fa-share-alt"></span> <span translate>Sharing</span></a></li>
-        <li><a data-toggle="tab" href="#device-advanced"><span class="fas fa-cogs"></span> <span translate>Advanced</span></a></li>
+        <!--<li><a data-toggle="tab" href="#device-advanced"><span class="fas fa-cogs"></span> <span translate>Advanced</span></a></li>-->
       </ul>
       <div class="tab-content">
         <div id="device-general" class="tab-pane in active">
@@ -13,7 +13,7 @@
             <div class="input-group">
               <input ng-if="editingDeviceNew()" name="deviceID" id="deviceID" class="form-control text-monospace" type="text" ng-model="currentDevice.deviceID" required="" valid-deviceid list="discovery-list" aria-required="true" />
               <div ng-if="!editingDeviceNew()" class="well well-sm form-control text-monospace" style="height: auto;" select-on-click>{{currentDevice.deviceID}}</div>
-              <div id="shareDeviceIdButtons" class="input-group-btn">
+              <!--<div id="shareDeviceIdButtons" class="input-group-btn">
                 <button data-container="body" type="button" class="btn btn-default" ng-click="copyToClipboard($event, currentDevice.deviceID)" ng-disabled="editingDeviceNew() && !deviceEditor.deviceID.$valid" tooltip data-original-title="{{ 'Copy' | translate }}">
                   <span class="fa fa-lg fa-clone"></span>
                 </button>
@@ -26,7 +26,7 @@
                 <button data-container="body" type="button" class="btn btn-default" data-toggle="modal" data-target="#idqr" ng-disabled="editingDeviceNew() && !deviceEditor.deviceID.$valid" tooltip data-original-title="{{ 'Show QR' | translate }}">
                   <span class="fa fa-lg fa-qrcode"></span>
                 </button>
-              </div>
+              </div>-->
             </div>
             <div ng-if="editingDeviceNew()">
               <datalist id="discovery-list">
@@ -43,11 +43,11 @@
                 </ul>
               </div>
               <p class="help-block">
-                <span translate ng-if="deviceEditor.deviceID.$valid || deviceEditor.deviceID.$pristine">The device ID to enter here can be found in the "Actions &gt; Show ID" dialog on the other device. Spaces and dashes are optional (ignored).</span>
-                <span translate ng-show="deviceEditor.deviceID.$valid || deviceEditor.deviceID.$pristine">When adding a new device, keep in mind that this device must be added on the other side too.</span>
+                <span translate ng-if="deviceEditor.deviceID.$valid || deviceEditor.deviceID.$pristine">Spaces and dashes are optional.</span>
+                <span translate ng-show="deviceEditor.deviceID.$valid || deviceEditor.deviceID.$pristine">Make sure to also add your current device on the other one.</span>
                 <span translate ng-if="deviceEditor.deviceID.$error.required && deviceEditor.deviceID.$dirty">The device ID cannot be blank.</span>
-                <span translate ng-if="deviceEditor.deviceID.$error.validDeviceid && deviceEditor.deviceID.$dirty">The entered device ID does not look valid. It should be a 52 or 56 character string consisting of letters and numbers, with spaces and dashes being optional.</span>
-                <span translate ng-if="deviceEditor.deviceID.$error.unique && deviceEditor.deviceID.$dirty">A device with that ID is already added.</span>
+                <span translate ng-if="deviceEditor.deviceID.$error.validDeviceid && deviceEditor.deviceID.$dirty">The entered device ID does not look right. It should be 52 or 56 letters and numbers. Spaces and dashes are optional.</span>
+                <span translate ng-if="deviceEditor.deviceID.$error.unique && deviceEditor.deviceID.$dirty">A device with that ID was already added.</span>
               </p>
             </div>
           </div>
