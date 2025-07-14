@@ -2135,6 +2135,35 @@ angular.module('syncthing.core')
             editFolderModal(initialTab);
         }
 
+        $scope.updateFolderIDFromPath = function() {
+            if (!$scope.editingFolderNew() || !$scope.currentFolder.path) {
+                return;
+            }
+            
+            // Expand tilde to home directory if needed
+            var path = $scope.currentFolder.path;
+            if (path.indexOf('~') === 0 && $scope.system && $scope.system.tilde) {
+                path = path.replace('~', $scope.system.tilde);
+            }
+            
+            // Extract the last component of the path as the folder ID
+            var pathSeparator = $scope.system.pathSeparator || '/';
+            var pathComponents = path.split(pathSeparator);
+            var lastComponent = '';
+            
+            // Find the last non-empty component
+            for (var i = pathComponents.length - 1; i >= 0; i--) {
+                if (pathComponents[i]) {
+                    lastComponent = pathComponents[i];
+                    break;
+                }
+            }
+            
+            if (lastComponent) {
+                $scope.currentFolder.id = lastComponent;
+            }
+        }
+
         $scope.internalVersioningEnabled = function (guiVersioning) {
             if (!$scope.currentFolder._guiVersioning) {
                 return false;
@@ -2553,11 +2582,17 @@ angular.module('syncthing.core')
                 var path = window.nativeFolderPicker.chooseFolder();
                 
                 if (path && path.length > 0) {
-                    $scope.currentFolder.path = path;
-                    if ($scope.updateFolderIDFromPath) {
-                        $scope.updateFolderIDFromPath();
-                    }
-                    $scope.$apply();
+                    // Use $timeout to avoid "$apply already in progress" error
+                    $timeout(function() {
+                        $scope.currentFolder.path = path;
+                        // Mark the path field as dirty to prevent the ID watcher from overwriting it
+                        if ($scope.folderEditor && $scope.folderEditor.folderPath) {
+                            $scope.folderEditor.folderPath.$setDirty();
+                        }
+                        if ($scope.updateFolderIDFromPath) {
+                            $scope.updateFolderIDFromPath();
+                        }
+                    });
                 }
             }
         };
