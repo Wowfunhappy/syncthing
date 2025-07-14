@@ -1758,6 +1758,13 @@ angular.module('syncthing.core')
             }
         };
 
+        $scope.selectAllFolders = function (state) {
+            var folders = $scope.currentSharing.shared.concat($scope.currentSharing.unrelated);
+            for (var i = 0; i < folders.length; i++) {
+                $scope.currentSharing.selected[folders[i].id] = !!state;
+            }
+        };
+
         $scope.addDevice = function (deviceID, name) {
             $scope.discoveryUnknown = [];
             for (var id in $scope.discoveryCache) {
