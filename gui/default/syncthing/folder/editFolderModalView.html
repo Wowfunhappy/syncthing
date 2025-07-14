@@ -18,7 +18,7 @@
               <span translate ng-if="folderEditor.folderLabel.$valid || folderEditor.folderLabel.$pristine">Optional descriptive label for the folder. Can be different on each device.</span>
             </p>
           </div>-->
-          <div ng-if="!editingFolderDefaults()" class="form-group" ng-class="{'has-error': folderEditor.folderID.$invalid && folderEditor.folderID.$dirty}">
+          <!-- <div ng-if="!editingFolderDefaults()" class="form-group" ng-class="{'has-error': folderEditor.folderID.$invalid && folderEditor.folderID.$dirty}">
             <label for="folderID"><span translate>Folder ID</span></label>
             <input name="folderID" ng-readonly="has(['existing', 'new-pending'], currentFolder._editing)" id="folderID" class="form-control" type="text" ng-model="currentFolder.id" required="" aria-required="true" unique-folder value="{{currentFolder.id}}" />
             <p class="help-block">
@@ -27,7 +27,8 @@
               <span translate ng-if="folderEditor.folderID.$error.required && folderEditor.folderID.$dirty">The folder ID cannot be blank.</span>
               <span translate ng-show="!editingFolderExisting()">When adding a new folder, keep in mind that the Folder ID is used to tie folders together between devices. They are case sensitive and must match exactly between all devices.</span>
             </p>
-          </div>
+          </div> -->
+          <input type="hidden" name="folderID" ng-model="currentFolder.id" required />
           <div class="form-group" ng-class="{'has-error': folderEditor.folderPath.$invalid && folderEditor.folderPath.$dirty && !editingFolderDefaults()}">
             <label translate for="folderPath">Folder Path</label>
             <div style="display: flex; gap: 5px;">
