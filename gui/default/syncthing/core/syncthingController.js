@@ -2585,8 +2585,8 @@ angular.module('syncthing.core')
         }
 
         $scope.chooseFolder = function() {
-            if (window.nativeFolderPicker && window.nativeFolderPicker.chooseFolder) {
-                var path = window.nativeFolderPicker.chooseFolder();
+            if (window.macgap && window.macgap.folderPicker && window.macgap.folderPicker.chooseFolder) {
+                var path = window.macgap.folderPicker.chooseFolder();
                 
                 if (path && path.length > 0) {
                     // Use $timeout to avoid "$apply already in progress" error
