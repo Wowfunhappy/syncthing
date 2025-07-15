@@ -16,7 +16,7 @@
   <link rel="shortcut icon" href="assets/img/favicon-{{syncthingStatus()}}.png" type="image/x-icon"/>
   <link rel="mask-icon" href="assets/img/safari-pinned-tab.svg" color="#0882c8"/>
 
-  <title ng-bind="thisDeviceName() + ' | Syncthing'"></title>
+  <title>Syncthing</title>
   <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet"/>
   <link href="vendor/maverix/maverix.css" rel="stylesheet"/>
   <link href="vendor/daterangepicker/daterangepicker.css" rel="stylesheet"/>
@@ -618,9 +618,9 @@
             </div>
           </div>
           <span class="pull-right">
-            <button type="button" class="btn btn-sm btn-default" ng-click="setAllFoldersPause(true)" ng-if="isAtleastOneFolderPausedStateSetTo(false)">
+            <!--<button type="button" class="btn btn-sm btn-default" ng-click="setAllFoldersPause(true)" ng-if="isAtleastOneFolderPausedStateSetTo(false)">
               <span class="fas fa-pause"></span>&nbsp;<span translate>Pause All</span>
-            </button>
+            </button>-->
             <button type="button" class="btn btn-sm btn-default" ng-click="setAllFoldersPause(false)" ng-if="isAtleastOneFolderPausedStateSetTo(true)">
               <span class="fas fa-play"></span>&nbsp;<span translate>Resume All</span>
             </button>

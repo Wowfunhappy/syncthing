@@ -53,10 +53,9 @@
 
         <div id="folder-sharing" class="tab-pane">
           <div class="form-horizontal">
-            <label translate>Share With Devices</label>&emsp;
-            <small><a href="#" ng-click="selectAllDevices(true)" translate>Select All</a>&emsp;
+            <label translate>Share With Devices</label>&emsp;<small><a href="#" ng-click="selectAllDevices(true)" translate>Select All</a>&emsp;
               <a href="#" ng-click="selectAllDevices(false)" translate>Deselect All</a></small>
-            <div class="form-group" ng-repeat="device in otherDevices()" style="margin-bottom: 0;">
+            <div class="form-group" ng-repeat="device in otherDevices()">
               <share-template selected="currentSharing.selected" encryption-passwords="currentSharing.encryptionPasswords" id="{{device.deviceID}}" label="{{deviceName(device)}}" folder-type="{{currentFolder.type}}" untrusted="device.untrusted || pendingIsRemoteEncrypted(currentFolder.id, device.deviceID)" remote-state="{{completion[device.deviceID][currentFolder.id].remoteState}}" />
             </div>
             <p class="help-block" ng-if="otherDevices().length <= 0">
@@ -152,7 +151,7 @@
             <label>
               <!--<input type="checkbox" ng-model="currentFolder._addIgnores" >&nbsp;<span translate>Add ignore patterns</span>-->
             </label>
-            <p translate class="help-block">Finish creating this folder to add ignore patterns.</p>
+            <p translate class="help-block">Finish adding this folder to create ignore patterns.</p>
           </div>
           <div ng-switch-default>
             <p translate>Enter ignore patterns, one per line.</p>
