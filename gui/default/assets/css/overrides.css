@@ -594,3 +594,17 @@ html[lang|="ko"] i {
 body {
     background-color: #F4F3F4;
 }
+
+.help-block {
+    font-size: 11px;
+}
+
+.form-control {
+    height: inherit;
+    padding: inherit;
+    font-size: 13px;
+}
+
+ul.nav.nav-tabs {
+    font-size: 14px;
+}
