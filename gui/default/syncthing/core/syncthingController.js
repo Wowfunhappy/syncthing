@@ -2275,6 +2275,13 @@ angular.module('syncthing.core')
             }
         };
 
+        $scope.selectAllDevices = function (state) {
+            var devices = $scope.otherDevices();
+            for (var i = 0; i < devices.length; i++) {
+                $scope.currentSharing.selected[devices[i].deviceID] = !!state;
+            }
+        };
+
         $scope.addFolder = function () {
             $http.get(urlbase + '/svc/random/string?length=10').success(function (data) {
                 var folderID = (data.random.substr(0, 5) + '-' + data.random.substr(5, 5)).toLowerCase();

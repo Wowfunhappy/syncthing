@@ -52,36 +52,21 @@
         </div>
 
         <div id="folder-sharing" class="tab-pane">
-          <div class="form-horizontal" ng-if="currentSharing.shared.length">
-            <label translate>Currently Shared With Devices</label>
-            <p class="help-block">
-              <span translate>Deselect devices to stop sharing this folder with.</span>&emsp;
-              <small><a href="#" ng-click="selectAllSharedDevices(true)" translate>Select All</a>&emsp;
-                <a href="#" ng-click="selectAllSharedDevices(false)" translate>Deselect All</a></small>
-            </p>
-            <div class="form-group" ng-repeat="device in currentSharing.shared">
+          <div class="form-horizontal">
+            <label translate>Share With Devices</label>&emsp;<small><a href="#" ng-click="selectAllDevices(true)" translate>Select All</a>&emsp;
+              <a href="#" ng-click="selectAllDevices(false)" translate>Deselect All</a></small>
+            <div class="form-group" ng-repeat="device in otherDevices()">
               <share-template selected="currentSharing.selected" encryption-passwords="currentSharing.encryptionPasswords" id="{{device.deviceID}}" label="{{deviceName(device)}}" folder-type="{{currentFolder.type}}" untrusted="device.untrusted || pendingIsRemoteEncrypted(currentFolder.id, device.deviceID)" remote-state="{{completion[device.deviceID][currentFolder.id].remoteState}}" />
             </div>
+            <p class="help-block" ng-if="otherDevices().length <= 0">
+              <span translate>There are no devices to share this folder with.</span>
+            </p>
             <p class="help-block" ng-if="folderHasUnacceptedDevices(currentFolder)">
               <sup>1</sup> <span translate>The remote device has not accepted sharing this folder.</span>
             </p>
             <p class="help-block" ng-if="folderHasPausedDevices(currentFolder)">
               <sup>2</sup> <span translate>The remote device has paused this folder.</span>
             </p>
-          </div>
-          <div class="form-horizontal" ng-if="currentSharing.unrelated.length || otherDevices().length <= 0">
-            <label translate>Unshared Devices</label>
-            <p class="help-block" ng-if="otherDevices().length > 0">
-              <span translate>Select additional devices to share this folder with.</span>&emsp;
-              <small><a href="#" ng-click="selectAllUnrelatedDevices(true)" translate>Select All</a>&emsp;
-                <a href="#" ng-click="selectAllUnrelatedDevices(false)" translate>Deselect All</a></small>
-            </p>
-            <p class="help-block" ng-if="otherDevices().length <= 0">
-              <span translate>There are no devices to share this folder with.</span>
-            </p>
-            <div class="form-group" ng-repeat="device in currentSharing.unrelated" ng-init="id = device.deviceID; folder = currentFolder">
-              <share-template selected="currentSharing.selected" encryption-passwords="currentSharing.encryptionPasswords" id="{{device.deviceID}}" label="{{deviceName(device)}}" folder-type="{{currentFolder.type}}" untrusted="device.untrusted || pendingIsRemoteEncrypted(currentFolder.id, device.deviceID)" />
-            </div>
           </div>
         </div>
 
