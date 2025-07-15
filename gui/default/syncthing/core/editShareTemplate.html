@@ -1,6 +1,6 @@
-<div class="col-md-6 checkbox">
-  <label for="sharedwith-{{id}}">
-    <input id="sharedwith-{{id}}" ng-model="selected[id]" type="checkbox" />
+<div class="checkbox" style="margin: 0; padding: 5px 0 5px 20px;">
+  <label for="sharedwith-{{id}}" style="display: flex; align-items: center; padding-left: 0;">
+    <input id="sharedwith-{{id}}" ng-model="selected[id]" type="checkbox" style="margin: 0 8px 0 0; position: relative; top: 0;" />
     <span tooltip data-original-title="{{id}}">
       <span ng-switch="remoteState">
         <span ng-switch-when="notSharing">{{label}}<sup>1</sup></span>
