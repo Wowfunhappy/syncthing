@@ -291,7 +291,8 @@ func NewFilesystem(fsType FilesystemType, uri string, opts ...Option) Filesystem
 // path must be clean (i.e., in canonical shortest form).
 func IsInternal(file string) bool {
 	// fs cannot import config, so we hard code .stfolder here (config.DefaultMarkerName)
-	internals := []string{".stfolder", ".stignore", ".stversions"}
+	// Wowfunhappy hijacked this list to also ignore OS X's DS_Store files.
+	internals := []string{".stfolder", ".stignore", ".stversions", ".DS_Store"}
 	for _, internal := range internals {
 		if file == internal {
 			return true
