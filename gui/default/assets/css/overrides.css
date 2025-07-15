@@ -578,3 +578,7 @@ html[lang|="ko"] i {
     -webkit-user-select: all;
     user-select: all;
 }
+
+#remoteNeed .table {
+    font-size: 12px;
+}
