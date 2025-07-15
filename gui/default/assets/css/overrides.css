@@ -579,6 +579,18 @@ html[lang|="ko"] i {
     user-select: all;
 }
 
-#remoteNeed .table {
-    font-size: 12px;
+/* Maverix theme overrides */
+.content {
+    position: relative;
+    left: 0;
+    top: 0;
+    overflow-y: visible;
+}
+
+.panel {
+    border: none;
+}
+
+body {
+    background-color: #F4F3F4;
 }
