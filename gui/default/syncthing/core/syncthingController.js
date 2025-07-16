@@ -18,15 +18,6 @@ angular.module('syncthing.core')
             Events.start();
         }
 
-        function notifyWithBadge() {
-            // Bounce dock icon and increment badge
-            macgap.app.bounce();
-            var currentBadge = macgap.dock.badge || '';
-            var badgeCount = currentBadge === '' ? 0 : parseInt(currentBadge, 10);
-            badgeCount++;
-            macgap.dock.badge = badgeCount.toString();
-        }
-
         // public/scope definitions
 
         $scope.completion = {};
@@ -270,7 +261,6 @@ angular.module('syncthing.core')
                     };
                     console.log("rejected device:", rejected.deviceID, pendingDevice);
                     $scope.pendingDevices[rejected.deviceID] = pendingDevice;
-                    notifyWithBadge();
                 });
             }
 
@@ -306,7 +296,6 @@ angular.module('syncthing.core')
                     }
                     pendingFolder.offeredBy[rejected.deviceID] = offeringDevice;
                     $scope.pendingFolders[rejected.folderID] = pendingFolder;
-                    notifyWithBadge();
                 });
             }
 
@@ -685,14 +674,8 @@ angular.module('syncthing.core')
 
         function refreshErrors() {
             $http.get(urlbase + '/system/error').success(function (data) {
-                var oldErrorCount = $scope.errors ? $scope.errors.length : 0;
                 $scope.errors = data.errors;
                 console.log("refreshErrors", data);
-                
-                // Notify for new errors
-                if (data.errors && data.errors.length > oldErrorCount) {
-                    notifyWithBadge();
-                }
             }).error($scope.emitHTTPError);
         }
 
