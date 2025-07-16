@@ -33,7 +33,7 @@
             <label translate for="folderPath">Folder Path</label>
             <div style="display: flex; gap: 5px;">
               <input name="folderPath" ng-readonly="editingFolderExisting()" id="folderPath" class="form-control" type="text" ng-model="currentFolder.path" list="directory-list" ng-required="!editingFolderDefaults()" ng-aria-required="!editingFolderDefaults()" path-is-sub-dir ng-change="updateFolderIDFromPath()" style="flex: 1;" />
-              <input type="button" value="Choose Folder..." ng-click="chooseFolder()" ng-disabled="editingFolderExisting()" class="" style="all: initial; -webkit-appearance: push-button; appearance: push-button; font: -apple-system-body; cursor: pointer;" />
+              <input type="button" value="Choose Folder..." ng-click="chooseFolder()" ng-disabled="editingFolderExisting()" ng-hide="editingFolderExisting()" class="" style="all: initial; -webkit-appearance: push-button; appearance: push-button; font: -apple-system-body; cursor: pointer;" />
             </div>
             <datalist id="directory-list">
               <option ng-repeat="directory in directoryList" value="{{ directory }}" />
