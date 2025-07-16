@@ -324,6 +324,7 @@ angular.module('syncthing.core')
 
         $scope.$on('ConfigLoaded', function () {
             if ($scope.config.options.urAccepted === 0) {
+                $scope.config.options.urAccepted = -1; // Auto-decline usage reporting
                 // If usage reporting has been neither accepted nor declined,
                 // we want to ask the user to make a choice. But we don't want
                 // to bug them during initial setup, so we set a cookie with
