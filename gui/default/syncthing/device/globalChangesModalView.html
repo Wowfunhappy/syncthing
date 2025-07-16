@@ -1,4 +1,29 @@
-<style> th, td { padding: 6px; } </style>
+<style> 
+  #globalChanges th, #globalChanges td { 
+    padding: 6px 16px;
+    font-size: 12px;
+  }
+  
+  /* Add dividers at small screens (mobile) */
+  @media (max-width: 767px) {
+    #globalChanges th, #globalChanges td {
+      border-right: 1px solid #ddd;
+    }
+    #globalChanges th:last-child, #globalChanges td:last-child {
+      border-right: none;
+    }
+  }
+  
+  /* Add dividers at medium screens (tablets) */
+  @media (min-width: 768px) and (max-width: 991px) {
+    #globalChanges th, #globalChanges td {
+      border-right: 1px solid #ddd;
+    }
+    #globalChanges th:last-child, #globalChanges td:last-child {
+      border-right: none;
+    }
+  }
+</style>
 <modal id="globalChanges" status="default" icon="fas fa-info-circle" heading="{{'Recent Changes' | translate}}" large="yes" closeable="yes">
   <div class="modal-body">
     <div class="table-responsive">
