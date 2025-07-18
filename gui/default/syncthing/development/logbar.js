@@ -26,7 +26,8 @@ function handleConsoleCall(type, message) {
         }
 
         var devTopBar = document.querySelector('#dev-top-bar');
-        devTopBar.style.display = 'block';
+        // Keep the error bar hidden
+        // devTopBar.style.display = 'block';
 
         element.innerHTML = parseInt(element.innerHTML) + 1;
         
